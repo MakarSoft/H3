@@ -28,3 +28,18 @@ h3_fastapi_project/
 │   │   ├── ci_cd.yml
 ├── README.md
 ```
+
+```
+Запуск
+uvicorn app.main:app --reload
+
+
+Проверка ...
+curl -X GET "http://127.0.0.1:8000/hex" -H "parenthex: 8c11aa6483607ff"
+
+curl -X GET "http://127.0.0.1:8000/avg" -H "resolution: 12"  
+
+curl -X GET "http://127.0.0.1:8000/bbox" -H "border: 55.999, 37.999,55.999, 38.001,56.001, 38.001,56.001, 37.999,55.999, 37.999"
+
+curl -X GET "http://127.0.0.1:8000/bbox" -H "border: 55.5,37.5,55.5,38.5,56.5,38.5,55.5,37.5"
+```
