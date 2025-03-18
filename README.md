@@ -65,7 +65,7 @@ uvicorn app.main:app --reload
 ### Проверка ...
 
 ```bash
-curl -X GET "http://127.0.0.1:8000/hex" -H "parenthex: 8c11aa6483607ff"
+curl -X GET "http://127.0.0.1:8000/hex" -H "parent_hex: 8c11aa6483607ff"
 ```
 
 ```bash
@@ -77,5 +77,5 @@ curl -X GET "http://127.0.0.1:8000/bbox" -H "border: 55.999, 37.999,55.999, 38.0
 ```
 
 ```bash
-curl -X GET "http://127.0.0.1:8000/bbox" -H "border: 55.5,37.5,55.5,38.5,56.5,38.5,55.5,37.5"
+# curl -X GET "http://127.0.0.1:8000/bbox" -H "border: 55.5,37.5,55.5,38.5,56.5,38.5,55.5,37.5"
 ```
