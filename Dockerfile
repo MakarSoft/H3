@@ -1,5 +1,6 @@
-# Используем официальный образ Python
-FROM python:3.12-slim
+# Сборка
+# =======
+FROM python:3.9-slim as builder
 
 # Устанавливаем рабочую директорию
 WORKDIR /app
@@ -8,10 +9,17 @@ WORKDIR /app
 COPY requirements.txt .
 
 # Устанавливаем зависимости
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --user -r requirements.txt
+
+# Финальный образ
+# ===============
+FROM python:3.9-slim
+WORKDIR /app
+COPY --from=builder /root/.local /root/.local
 
 # Копируем исходный код
 COPY . .
+ENV PATH=/root/.local/bin:$PATH
 
 # Команда для запуска приложения
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
